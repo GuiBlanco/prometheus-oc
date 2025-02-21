@@ -26,8 +26,12 @@ spec:
             cpu: "250m"
         volumeMounts:
         - name: prometheus-storage
-          mountPath: /prometheus
+        - name: prometheus-config
+          mountPath: /etc/prometheus/
       volumes:
-      - name: prometheus-storage
-        persistentVolumeClaim:
-          claimName: prometheus-pvc
+        - name: prometheus-config
+          configMap:
+            name: prometheus-config
+        - name: prometheus-storage
+          persistentVolumeClaim:
+            claimName: prometheus-pvc
