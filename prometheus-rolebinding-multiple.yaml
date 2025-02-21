@@ -1,0 +1,17 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: prometheus-rolebinding-multiple
+  namespace: default
+subjects:
+- kind: User
+  name: user1  # Substitua pelo nome do primeiro usuário
+  apiGroup: rbac.authorization.k8s.io
+- kind: User
+  name: user2  # Substitua pelo nome do segundo usuário
+  apiGroup: rbac.authorization.k8s.io
+# Adicione mais usuários conforme necessário
+roleRef:
+  kind: Role
+  name: prometheus-role
+  apiGroup: rbac.authorization.k8s.io
